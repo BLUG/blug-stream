@@ -12,5 +12,5 @@ getResolution(){
   xrandr|sed -n 's/\(.*\) connected primary \([0-9]*\)x\([0-9]*\)+.*/\2x\3/p'|head -n 1
 }
 getResolution
-./ffmpeg -video_size $(getResolution) -framerate 25 -f x11grab -i :1.0+0,0 \
+./ffmpeg -video_size $(getResolution) -framerate 25 -f x11grab -i :0.0+0,0 \
   -video_size 1280x720 -an -vcodec mpeg2video -b:v $BITRATE -f mpegts "udp://${HOSTPORT}"
